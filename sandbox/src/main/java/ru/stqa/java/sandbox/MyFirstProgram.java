@@ -20,7 +20,7 @@ public class MyFirstProgram {
 
 
 
-        System.out.println(Point.distance(p1, p2));;
+        System.out.println(Point.distance(p1, p2));
     }
 
     public static void hello(String somebody) {
