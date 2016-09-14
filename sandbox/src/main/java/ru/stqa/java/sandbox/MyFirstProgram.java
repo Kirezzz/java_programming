@@ -19,6 +19,8 @@ public class MyFirstProgram {
         Point p2 = new Point(3, 4);
 
 
+
+        System.out.println(Point.distance(p1, p2));;
     }
 
     public static void hello(String somebody) {
