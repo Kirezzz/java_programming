@@ -21,7 +21,7 @@ public class AddressCreationTests {
     }
     
     @Test
-    public void AddressCreationTests() {
+    public void testAddressCreation() {
         initAddressCreation();
         fillAddressForm(new AddressData("First name1", "Middle name1", "Last name1", "address1", "111-222-333", "test1@test.com"));
         submitAddressCreation();
