@@ -15,7 +15,7 @@ public class ContactHelper extends HelperBase{
     super(wd);
   }
 
-  public void fillAddressForm(AddressData addressData, TestBase testBase) {
+  public void fillAddressForm(AddressData addressData) {
     type(By.name("firstname"), addressData.getFirstname());
     type(By.name("middlename"), addressData.getMiddlename());
     type(By.name("lastname"), addressData.getLastname());
