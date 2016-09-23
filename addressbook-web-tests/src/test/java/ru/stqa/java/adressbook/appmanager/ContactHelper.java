@@ -42,6 +42,13 @@ public class ContactHelper extends HelperBase {
 
   public void deleteSelectedContact() {
     click(By.xpath("//*[@type='button' and @value='Delete']"));
+  }
 
+  public void initAddressModification() {
+    click(By.xpath("//*[@id='maintable']/tbody/tr[@name='entry'][1]/td[@class='center']/a[1]/img[@title='Edit']"));
+  }
+
+  public void submitAddressModification() {
+    click(By.xpath("//*[@id='content']/form[1]/input[@name='update'][2]"));
   }
 }
