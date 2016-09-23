@@ -9,7 +9,7 @@ import ru.stqa.java.adressbook.tests.TestBase;
 /**
  * Created by Sony on 22.09.2016.
  */
-public class ContactHelper extends HelperBase{
+public class ContactHelper extends HelperBase {
 
   public ContactHelper(FirefoxDriver wd) {
     super(wd);
@@ -25,7 +25,7 @@ public class ContactHelper extends HelperBase{
   }
 
   public void returnToHomePage() {
-   click(By.linkText("home page"));
+    click(By.linkText("home page"));
   }
 
   public void submitAddressCreation() {
@@ -33,6 +33,15 @@ public class ContactHelper extends HelperBase{
   }
 
   public void initAddressCreation() {
-   click(By.linkText("add new"));
+    click(By.linkText("add new"));
+  }
+
+  public void selectContact() {
+    click(By.xpath("//*[@id='maintable']/tbody/tr[@name='entry'][1]/td[@class='center'][1]/input[@type='checkbox']"));
+  }
+
+  public void deleteSelectedContact() {
+    click(By.xpath("//*[@type='button' and @value='Delete']"));
+
   }
 }
