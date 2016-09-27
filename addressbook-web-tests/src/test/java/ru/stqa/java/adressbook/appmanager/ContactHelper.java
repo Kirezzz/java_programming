@@ -2,6 +2,7 @@ package ru.stqa.java.adressbook.appmanager;
 
 import org.omg.CORBA.TypeCode;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.java.adressbook.model.AddressData;
 import ru.stqa.java.adressbook.tests.TestBase;
@@ -11,7 +12,7 @@ import ru.stqa.java.adressbook.tests.TestBase;
  */
 public class ContactHelper extends HelperBase {
 
-  public ContactHelper(FirefoxDriver wd) {
+  public ContactHelper(WebDriver wd) {
     super(wd);
   }
 

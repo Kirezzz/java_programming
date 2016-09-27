@@ -1,6 +1,7 @@
 package ru.stqa.java.adressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.java.adressbook.model.GroupData;
 import ru.stqa.java.adressbook.tests.TestBase;
@@ -10,7 +11,7 @@ import ru.stqa.java.adressbook.tests.TestBase;
  */
 public class GroupHelper extends HelperBase{
 
-  public GroupHelper(FirefoxDriver wd) {
+  public GroupHelper(WebDriver wd) {
     super(wd);
   }
 
