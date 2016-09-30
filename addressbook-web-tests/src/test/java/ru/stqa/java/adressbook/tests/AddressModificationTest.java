@@ -11,7 +11,14 @@ public class AddressModificationTest extends TestBase {
   public void testAddressModification() {
     app.getNavigationHelper().gotoHomePage();
     app.getContactHelper().initAddressModification();
-    app.getContactHelper().fillAddressForm(new AddressData("First name1", "Middle name1", "Last name1", "address1", "111-222-333", "test1@test.com"));
+    app.getContactHelper().fillAddressForm(new AddressData(
+            "First name1",
+            "Middle name1",
+            "Last name1",
+            "address1",
+            "111-222-333",
+            "test1@test.com",
+            null), false);
     app.getContactHelper().submitAddressModification();
     app.getContactHelper().returnToHomePage();
   }

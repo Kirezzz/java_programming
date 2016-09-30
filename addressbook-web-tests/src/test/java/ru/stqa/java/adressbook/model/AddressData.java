@@ -7,14 +7,16 @@ public class AddressData {
   private final String address1;
   private final String telhome;
   private final String email1;
+  private String group;
 
-  public AddressData(String firstname, String middlename, String lastname, String address1, String telhome, String email1) {
+  public AddressData(String firstname, String middlename, String lastname, String address1, String telhome, String email1,String group) {
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;
     this.address1 = address1;
     this.telhome = telhome;
     this.email1 = email1;
+    this.group = group;
   }
 
   public String getFirstname() {
@@ -39,5 +41,9 @@ public class AddressData {
 
   public String getEmail1() {
     return email1;
+  }
+
+  public String getGroup() {
+    return group;
   }
 }
