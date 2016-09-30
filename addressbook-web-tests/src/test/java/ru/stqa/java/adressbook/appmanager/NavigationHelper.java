@@ -14,11 +14,21 @@ public class NavigationHelper extends HelperBase{
   }
 
   public void gotoGroupPage() {
+    //Если находимся на странице групп, то ничего не делать, иначе переходим на страницу групп
+    if (isElementPresent(By.tagName("h1"))
+            && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+            && isElementPresent(By.name("new"))) {
+      return;
+    }
+      click(By.linkText("groups"));
+    }
 
-    click(By.linkText("groups"));
-  }
 
   public void gotoHomePage() {
+    //Если находимся на странице адресов, то ничего делать не надо, иначе переходим на страницу адресов
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
     click(By.linkText("home"));
   }
 }
