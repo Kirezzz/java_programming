@@ -1,14 +1,10 @@
 package ru.stqa.java.adressbook.appmanager;
 
-import org.omg.CORBA.TypeCode;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import ru.stqa.java.adressbook.model.AddressData;
-import ru.stqa.java.adressbook.tests.TestBase;
+import ru.stqa.java.adressbook.model.ContactData;
 
 /**
  * Created by Sony on 22.09.2016.
@@ -19,16 +15,16 @@ public class ContactHelper extends HelperBase {
     super(wd);
   }
 
-  public void fillAddressForm(AddressData addressData, Boolean creation) {
-    type(By.name("firstname"), addressData.getFirstname());
-    type(By.name("middlename"), addressData.getMiddlename());
-    type(By.name("lastname"), addressData.getLastname());
-    type(By.name("address"), addressData.getAddress1());
-    type(By.name("home"), addressData.getTelhome());
-    type(By.name("email"), addressData.getEmail1());
+  public void fillContactForm(ContactData contactData, Boolean creation) {
+    type(By.name("firstname"), contactData.getFirstname());
+    type(By.name("middlename"), contactData.getMiddlename());
+    type(By.name("lastname"), contactData.getLastname());
+    type(By.name("address"), contactData.getAddress1());
+    type(By.name("home"), contactData.getTelhome());
+    type(By.name("email"), contactData.getEmail1());
     //Если тест создания, то заполняем поле группы, иначе игнорируем заполнение
     if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(addressData.getGroup());
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -39,11 +35,11 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("home page"));
   }
 
-  public void submitAddressCreation() {
+  public void submitContactCreation() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void initAddressCreation() {
+  public void initContactCreation() {
     click(By.linkText("add new"));
   }
 
@@ -55,11 +51,22 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//*[@type='button' and @value='Delete']"));
   }
 
-  public void initAddressModification() {
+  public void initContactModification() {
     click(By.xpath("//*[@id='maintable']/tbody/tr[@name='entry'][1]/td[@class='center']/a[1]/img[@title='Edit']"));
   }
 
-  public void submitAddressModification() {
+  public void submitContactModification() {
     click(By.xpath("//*[@id='content']/form[1]/input[@name='update'][2]"));
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.xpath("//*[@id='maintable']/tbody/tr[@name='entry'][1]/td[@class='center'][1]/input[@type='checkbox']"));
+  }
+
+  public void createContact(ContactData contact, boolean creation) {
+    initContactCreation();
+    fillContactForm(contact, creation);
+    submitContactCreation();
+    returnToHomePage();
   }
 }

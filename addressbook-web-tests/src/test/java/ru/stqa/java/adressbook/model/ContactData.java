@@ -1,6 +1,6 @@
 package ru.stqa.java.adressbook.model;
 
-public class AddressData {
+public class ContactData {
   private final String firstname;
   private final String middlename;
   private final String lastname;
@@ -9,7 +9,7 @@ public class AddressData {
   private final String email1;
   private String group;
 
-  public AddressData(String firstname, String middlename, String lastname, String address1, String telhome, String email1,String group) {
+  public ContactData(String firstname, String middlename, String lastname, String address1, String telhome, String email1, String group) {
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;
