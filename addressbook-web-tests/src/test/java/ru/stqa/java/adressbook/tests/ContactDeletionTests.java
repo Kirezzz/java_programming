@@ -24,5 +24,6 @@ public class ContactDeletionTests extends TestBase {
     app.getContactHelper().selectContact();
     app.getContactHelper().deleteSelectedContact();
     app.getContactHelper().acceptAlert();
+    app.getNavigationHelper().gotoHomePage();
   }
 }
