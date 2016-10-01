@@ -26,9 +26,9 @@ public class ContactModificationTest extends TestBase {
             "First name1",
             "Middle name1",
             "Last name1",
-            "address1",
-            "111-222-333",
-            "test1@test.com",
+            "address2",
+            "111-000-333",
+            "test2@test.com",
             null), false);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToHomePage();
