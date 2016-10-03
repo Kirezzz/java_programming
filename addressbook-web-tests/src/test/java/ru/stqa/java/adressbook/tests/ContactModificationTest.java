@@ -1,5 +1,6 @@
 package ru.stqa.java.adressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.java.adressbook.model.ContactData;
 
@@ -21,6 +22,7 @@ public class ContactModificationTest extends TestBase {
               "test1@test.com",
               "test1"), true);
     }
+    int before = app.getGroupHelper().getGroupCount();
     app.getContactHelper().initContactModification();
     app.getContactHelper().fillContactForm(new ContactData(
             "First name1",
@@ -32,5 +34,7 @@ public class ContactModificationTest extends TestBase {
             null), false);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToHomePage();
+    int after = app.getGroupHelper().getGroupCount();
+    Assert.assertEquals(after, before);
   }
 }
