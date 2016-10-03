@@ -1,5 +1,6 @@
 package ru.stqa.java.adressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.java.adressbook.model.ContactData;
 
@@ -21,9 +22,12 @@ public class ContactDeletionTests extends TestBase {
               "test1@test.com",
               "test1"), true);
     }
+    int before = app.getContactHelper().getContactCount();
     app.getContactHelper().selectContact();
     app.getContactHelper().deleteSelectedContact();
     app.getContactHelper().acceptAlert();
     app.getNavigationHelper().gotoHomePage();
+    int after = app.getContactHelper().getContactCount();
+    Assert.assertEquals(after, before - 1);
   }
 }

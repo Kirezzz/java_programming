@@ -22,7 +22,7 @@ public class ContactModificationTest extends TestBase {
               "test1@test.com",
               "test1"), true);
     }
-    int before = app.getGroupHelper().getGroupCount();
+    int before = app.getContactHelper().getContactCount();
     app.getContactHelper().initContactModification();
     app.getContactHelper().fillContactForm(new ContactData(
             "First name1",
@@ -34,7 +34,7 @@ public class ContactModificationTest extends TestBase {
             null), false);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToHomePage();
-    int after = app.getGroupHelper().getGroupCount();
+    int after = app.getContactHelper().getContactCount();
     Assert.assertEquals(after, before);
   }
 }
