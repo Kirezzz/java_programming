@@ -16,8 +16,7 @@ public class Collections {
     languages.add("Python");
     languages.add("PHP");
 
-    String[] langs = {"Java","C#","Python", "PHP"};
-    for (String l : langs) {
+    for (String l : languages) {
       System.out.println("Я хочу выучить " + l);
     }
   }
