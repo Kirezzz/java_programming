@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.java.adressbook.model.ContactData;
 
+import java.util.List;
+
 /**
  * Created by Sony on 24.09.2016.
  */
@@ -23,8 +25,8 @@ public class ContactModificationTest extends TestBase {
               "test1"), true);
     }
 
-    int before = app.getContactHelper().getContactCount();
-    app.getContactHelper().initContactModification(before - 1);
+    List<ContactData> before = app.getContactHelper().getContactList();
+    app.getContactHelper().initContactModification(before.size() - 1);
     app.getContactHelper().fillContactForm(new ContactData(
             "First name1",
             "Middle name1",
@@ -35,7 +37,7 @@ public class ContactModificationTest extends TestBase {
             null), false);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToHomePage();
-    int after = app.getContactHelper().getContactCount();
-    Assert.assertEquals(after, before);
+    List<ContactData> after = app.getContactHelper().getContactList();
+    Assert.assertEquals(after.size(), before.size());
   }
 }

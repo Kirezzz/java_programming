@@ -3,6 +3,10 @@ package ru.stqa.java.adressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.java.adressbook.model.ContactData;
+import ru.stqa.java.adressbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Sony on 23.09.2016.
@@ -23,12 +27,12 @@ public class ContactDeletionTests extends TestBase {
               "test1"), true);
     }
 
-    int before = app.getContactHelper().getContactCount();
-    app.getContactHelper().selectContact(before - 1);
+    List<ContactData> before = app.getContactHelper().getContactList();
+    app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().deleteSelectedContact();
     app.getContactHelper().acceptAlert();
     app.getNavigationHelper().gotoHomePage();
-    int after = app.getContactHelper().getContactCount();
-    Assert.assertEquals(after, before - 1);
+    List<ContactData> after = app.getContactHelper().getContactList();
+    Assert.assertEquals(after.size(), before.size() - 1);
   }
 }

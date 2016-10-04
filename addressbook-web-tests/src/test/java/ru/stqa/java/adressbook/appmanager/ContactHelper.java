@@ -2,9 +2,13 @@ package ru.stqa.java.adressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.java.adressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Sony on 22.09.2016.
@@ -72,5 +76,16 @@ public class ContactHelper extends HelperBase {
 
   public int getContactCount() {
     return wd.findElements(By.xpath("//*[@id='maintable']//input[@type='checkbox']")).size();
+  }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> elements = wd.findElements(By.xpath("//*[@id='maintable']//td[2]")); //Last Name
+    for (WebElement element: elements) {
+      String lastname = element.getText();
+      ContactData contact = new ContactData(lastname, null, null, null, null, null, null);
+      contacts.add(contact);
+    }
+    return contacts;
   }
 }
