@@ -43,16 +43,16 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void selectContact() {
-    click(By.xpath("//*[@id='maintable']/tbody/tr[@name='entry'][1]/td[@class='center'][1]/input[@type='checkbox']"));
+  public void selectContact(int index) {
+    wd.findElements(By.xpath("//*[@id='maintable']//input[@type='checkbox']")).get(index).click();
   }
 
   public void deleteSelectedContact() {
     click(By.xpath("//*[@type='button' and @value='Delete']"));
   }
 
-  public void initContactModification() {
-    click(By.xpath("//*[@id='maintable']/tbody/tr[@name='entry'][1]/td[@class='center']/a[1]/img[@title='Edit']"));
+  public void initContactModification(int index) {
+    wd.findElements((By.xpath("//*[@id='maintable']//img[@title='Edit']"))).get(index).click();
   }
 
   public void submitContactModification() {
@@ -71,6 +71,6 @@ public class ContactHelper extends HelperBase {
   }
 
   public int getContactCount() {
-    return wd.findElements(By.name("selected[]")).size();
+    return wd.findElements(By.xpath("//*[@id='maintable']//input[@type='checkbox']")).size();
   }
 }

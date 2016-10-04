@@ -22,8 +22,9 @@ public class ContactModificationTest extends TestBase {
               "test1@test.com",
               "test1"), true);
     }
+
     int before = app.getContactHelper().getContactCount();
-    app.getContactHelper().initContactModification();
+    app.getContactHelper().initContactModification(before - 1);
     app.getContactHelper().fillContactForm(new ContactData(
             "First name1",
             "Middle name1",
