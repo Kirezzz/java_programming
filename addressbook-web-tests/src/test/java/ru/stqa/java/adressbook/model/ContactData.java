@@ -1,7 +1,8 @@
 package ru.stqa.java.adressbook.model;
 
 public class ContactData {
-  private String id;
+
+  private int id;
   private final String firstname;
   private final String middlename;
   private final String lastname;
@@ -11,7 +12,7 @@ public class ContactData {
   private String group;
 
   public ContactData(String firstname, String middlename, String lastname, String address1, String telhome, String email1, String group) {
-    this.id = null;
+    this.id = 0;
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;
@@ -21,7 +22,7 @@ public class ContactData {
     this.group = group;
   }
 
-  public ContactData(String id, String firstname, String middlename, String lastname, String address1, String telhome, String email1, String group) {
+  public ContactData(int id, String firstname, String middlename, String lastname, String address1, String telhome, String email1, String group) {
     this.id = id;
     this.firstname = firstname;
     this.middlename = middlename;
@@ -32,9 +33,14 @@ public class ContactData {
     this.group = group;
   }
 
-  public String getId() {
+  public int getId() {
     return id;
   }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
 
   public String getFirstname() {
     return firstname;
@@ -80,7 +86,7 @@ public class ContactData {
 
     ContactData that = (ContactData) o;
 
-    if (id != null ? !id.equals(that.id) : that.id != null) return false;
+    if (id != that.id) return false;
     if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
     return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
 
@@ -88,7 +94,7 @@ public class ContactData {
 
   @Override
   public int hashCode() {
-    int result = id != null ? id.hashCode() : 0;
+    int result = id;
     result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
