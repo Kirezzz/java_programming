@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Sony on 24.09.2016.
  */
 public class ContactModificationTest extends TestBase {
-  @Test
+  @Test(enabled = false)
   public void testContactModification() {
     app.getNavigationHelper().gotoHomePage();
     //Если контактов нет, то создается контакт

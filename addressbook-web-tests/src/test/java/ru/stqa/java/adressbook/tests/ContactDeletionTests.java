@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Sony on 23.09.2016.
  */
 public class ContactDeletionTests extends TestBase {
-  @Test
+  @Test(enabled = false)
   public void testContactDeletion() {
     app.getNavigationHelper().gotoHomePage();
     //Если контактов нет, то создается контакт
