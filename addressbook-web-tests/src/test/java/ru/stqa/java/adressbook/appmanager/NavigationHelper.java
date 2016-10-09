@@ -24,7 +24,7 @@ public class NavigationHelper extends HelperBase{
     }
 
 
-  public void gotoHomePage() {
+  public void homePage() {
     //Если находимся на странице адресов, то ничего делать не надо, иначе переходим на страницу адресов
     if (isElementPresent(By.id("maintable"))) {
       return;

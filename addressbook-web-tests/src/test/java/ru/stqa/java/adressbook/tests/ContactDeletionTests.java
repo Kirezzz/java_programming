@@ -13,7 +13,7 @@ import java.util.List;
 public class ContactDeletionTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
-    app.goTo().gotoHomePage();
+    app.goTo().homePage();
     //Если контактов нет, то создается контакт
     ContactData contact = new ContactData(
             "First name1",
@@ -23,25 +23,24 @@ public class ContactDeletionTests extends TestBase {
             "111-222-333",
             "test1@test.com",
             "test1");
-    if (! app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(contact, true);
+    if (app.contact().list().size() == 0) {
+      app.contact().create(contact, true);
     }
 
   }
 
-  @Test(enabled = false)
+  @Test
   public void testContactDeletion() {
 
-    List<ContactData> before = app.getContactHelper().getContactList();
+    List<ContactData> before = app.contact().list();
     int index = before.size() - 1;
-    app.getContactHelper().selectContact(index);
-    app.getContactHelper().deleteSelectedContact();
-    app.getContactHelper().acceptAlert();
-    app.goTo().gotoHomePage();
-    List<ContactData> after = app.getContactHelper().getContactList();
+    app.contact().delete(index);
+    app.goTo().homePage();
+    List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), index);
 
     before.remove(index);
     Assert.assertEquals(before, after);
   }
+
 }

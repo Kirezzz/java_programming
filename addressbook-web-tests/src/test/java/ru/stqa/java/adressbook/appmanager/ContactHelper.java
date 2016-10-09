@@ -34,6 +34,12 @@ public class ContactHelper extends HelperBase {
     }
   }
 
+  public void modify(int index, ContactData contact) {
+   initContactModification(index);
+   fillContactForm(contact, false);
+   submitContactModification();
+   returnToHomePage();
+  }
 
   public void returnToHomePage() {
     click(By.linkText("home page"));
@@ -55,6 +61,13 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//*[@type='button' and @value='Delete']"));
   }
 
+  public void delete(int index) {
+    selectContact(index);
+    deleteSelectedContact();
+    acceptAlert();
+
+  }
+
   public void initContactModification(int index) {
     wd.findElements((By.xpath("//*[@id='maintable']//img[@title='Edit']"))).get(index).click();
   }
@@ -67,7 +80,7 @@ public class ContactHelper extends HelperBase {
     return isElementPresent(By.xpath("//*[@id='maintable']/tbody/tr[@name='entry'][1]/td[@class='center'][1]/input[@type='checkbox']"));
   }
 
-  public void createContact(ContactData contact, boolean creation) {
+  public void create(ContactData contact, boolean creation) {
     initContactCreation();
     fillContactForm(contact, creation);
     submitContactCreation();
@@ -78,10 +91,10 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.xpath("//*[@id='maintable']//input[@type='checkbox']")).size();
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> rows = wd.findElements(By.name("entry"));
-    for (WebElement row: rows) {
+    for (WebElement row : rows) {
       List<WebElement> cells = row.findElements(By.tagName("td"));
       int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
       String lastname = cells.get(1).getText();
