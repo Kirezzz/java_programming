@@ -24,7 +24,7 @@ public class ContactDeletionTests extends TestBase {
             "address1",
             "111-222-333",
             "test1@test.com",
-            "test1")
+            "test1");
     if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(contact, true);
     }
