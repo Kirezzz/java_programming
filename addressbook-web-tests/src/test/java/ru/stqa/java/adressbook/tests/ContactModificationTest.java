@@ -4,10 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.java.adressbook.model.ContactData;
-import ru.stqa.java.adressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -16,7 +14,7 @@ import java.util.List;
 public class ContactModificationTest extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     //Если контактов нет, то создается контакт
     ContactData contact = new ContactData(
             "First name1",
@@ -32,7 +30,7 @@ public class ContactModificationTest extends TestBase {
 
   }
 
-  @Test
+  @Test(enabled = false)
   public void testContactModification() {
 
     List<ContactData> before = app.getContactHelper().getContactList();

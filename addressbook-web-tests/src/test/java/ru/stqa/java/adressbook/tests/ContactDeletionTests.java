@@ -4,9 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.java.adressbook.model.ContactData;
-import ru.stqa.java.adressbook.model.GroupData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +13,7 @@ import java.util.List;
 public class ContactDeletionTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     //Если контактов нет, то создается контакт
     ContactData contact = new ContactData(
             "First name1",
@@ -31,7 +29,7 @@ public class ContactDeletionTests extends TestBase {
 
   }
 
-  @Test
+  @Test(enabled = false)
   public void testContactDeletion() {
 
     List<ContactData> before = app.getContactHelper().getContactList();
@@ -39,7 +37,7 @@ public class ContactDeletionTests extends TestBase {
     app.getContactHelper().selectContact(index);
     app.getContactHelper().deleteSelectedContact();
     app.getContactHelper().acceptAlert();
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), index);
 

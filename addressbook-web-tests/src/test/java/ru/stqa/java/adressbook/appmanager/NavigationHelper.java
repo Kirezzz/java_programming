@@ -13,7 +13,7 @@ public class NavigationHelper extends HelperBase{
     super(wd);
   }
 
-  public void gotoGroupPage() {
+  public void groupPage() {
     //Если находимся на странице групп, то ничего не делать, иначе переходим на страницу групп
     if (isElementPresent(By.tagName("h1"))
             && wd.findElement(By.tagName("h1")).getText().equals("Groups")
