@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Sony on 22.09.2016.
  */
-public class GroupHelper extends HelperBase{
+public class GroupHelper extends HelperBase {
 
   public GroupHelper(WebDriver wd) {
     super(wd);
@@ -60,12 +60,20 @@ public class GroupHelper extends HelperBase{
     returnToGroupPage();
   }
 
+  public void modifyGroup(int index, GroupData group) {
+    selectGroup(index);
+    initGroupModification();
+    fillGroupForm(group);
+    submitGroupModification();
+    returnToGroupPage();
+  }
+
   public boolean isThereAGroup() {
     return isElementPresent(By.name("selected[]"));
   }
 
   public int getGroupCount() {
-    return  wd.findElements(By.name("selected[]")).size();
+    return wd.findElements(By.name("selected[]")).size();
   }
 
   public List<GroupData> getGroupList() {
