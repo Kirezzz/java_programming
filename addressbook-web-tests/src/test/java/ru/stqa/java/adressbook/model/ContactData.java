@@ -2,45 +2,59 @@ package ru.stqa.java.adressbook.model;
 
 public class ContactData {
 
-  private int id;
-  private final String firstname;
-  private final String middlename;
-  private final String lastname;
-  private final String address1;
-  private final String telhome;
-  private final String email1;
+  private int id = Integer.MAX_VALUE;
+  private String firstname;
+  private String middlename;
+  private String lastname;
+  private String address1;
+  private String telhome;
+  private String email1;
   private String group;
 
-  public ContactData(String firstname, String middlename, String lastname, String address1, String telhome, String email1, String group) {
-    this.id = Integer.MAX_VALUE;
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.address1 = address1;
-    this.telhome = telhome;
-    this.email1 = email1;
-    this.group = group;
+
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
   }
 
-  public ContactData(int id, String firstname, String middlename, String lastname, String address1, String telhome, String email1, String group) {
-    this.id = id;
+  public ContactData withFirstname(String firstname) {
     this.firstname = firstname;
+    return this;
+  }
+
+  public ContactData withMiddlename(String middlename) {
     this.middlename = middlename;
+    return this;
+  }
+
+  public ContactData withLastname(String lastname) {
     this.lastname = lastname;
+    return this;
+  }
+
+  public ContactData withAddress1(String address1) {
     this.address1 = address1;
+    return this;
+  }
+
+  public ContactData withTelhome(String telhome) {
     this.telhome = telhome;
+    return this;
+  }
+
+  public ContactData withEmail1(String email1) {
     this.email1 = email1;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
     this.group = group;
+    return this;
   }
 
   public int getId() {
     return id;
   }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
 
   public String getFirstname() {
     return firstname;

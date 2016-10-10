@@ -9,17 +9,17 @@ import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
-  @Test(enabled = false)
+  @Test
   public void testContactCreation() {
     List<ContactData> before = app.contact().list();
-    ContactData contact = new ContactData(
-            "First name5",
-            "Middle name5",
-            "Last name5",
-            "address5",
-            "111-222-333",
-            "test5@test.com",
-            "test1");
+    ContactData contact = new ContactData()
+            .withFirstname("First name5")
+            .withMiddlename("Middle name5")
+            .withLastname("Last name5")
+            .withAddress1("address5")
+            .withTelhome("111-222-333")
+            .withEmail1("test5@test.com")
+            .withGroup("test1");
     app.contact().create(contact, true);
     List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);

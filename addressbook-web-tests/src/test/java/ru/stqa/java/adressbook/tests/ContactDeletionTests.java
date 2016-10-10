@@ -15,14 +15,14 @@ public class ContactDeletionTests extends TestBase {
   public void ensurePreconditions() {
     app.goTo().homePage();
     //Если контактов нет, то создается контакт
-    ContactData contact = new ContactData(
-            "First name1",
-            "Middle name1",
-            "Last name1",
-            "address1",
-            "111-222-333",
-            "test1@test.com",
-            "test1");
+    ContactData contact = new ContactData()
+            .withFirstname("First name5")
+            .withMiddlename("Middle name5")
+            .withLastname("Last name5")
+            .withAddress1("address5")
+            .withTelhome("111-222-333")
+            .withEmail1("test5@test.com")
+            .withGroup("test1");
     if (app.contact().list().size() == 0) {
       app.contact().create(contact, true);
     }

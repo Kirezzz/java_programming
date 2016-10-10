@@ -16,14 +16,14 @@ public class ContactModificationTest extends TestBase {
   public void ensurePreconditions() {
     app.goTo().homePage();
     //Если контактов нет, то создается контакт
-    ContactData contact = new ContactData(
-            "First name1",
-            "Middle name1",
-            "Last name1",
-            "address1",
-            "111-222-333",
-            "test1@test.com",
-            "test1");
+    ContactData contact = new ContactData()
+            .withFirstname("First name5")
+            .withMiddlename("Middle name5")
+            .withLastname("Last name5")
+            .withAddress1("address5")
+            .withTelhome("111-222-333")
+            .withEmail1("test5@test.com")
+            .withGroup("test1");
     if (app.contact().list().size() == 0) {
       app.contact().create(contact, true);
     }
@@ -35,15 +35,14 @@ public class ContactModificationTest extends TestBase {
 
     List<ContactData> before = app.contact().list();
     int index = before.size() - 1;
-    ContactData contact = new ContactData(
-            before.get(index).getId(),
-            "First name1",
-            "Middle name1",
-            "Last name1",
-            "address2",
-            "111-000-333",
-            "test2@test.com",
-            null);
+    ContactData contact = new ContactData()
+            .withId(before.get(index).getId())
+            .withFirstname("First name1")
+            .withMiddlename("Middle name1")
+            .withLastname("Last name1")
+            .withAddress1("address2")
+            .withTelhome("111-000-333")
+            .withEmail1("test2@test.com");
     app.contact().modify(index, contact);
     List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size());
