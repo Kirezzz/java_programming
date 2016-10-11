@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.stqa.java.adressbook.model.ContactData;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Sony on 23.09.2016.
@@ -32,14 +33,14 @@ public class ContactDeletionTests extends TestBase {
   @Test
   public void testContactDeletion() {
 
-    List<ContactData> before = app.contact().list();
-    int index = before.size() - 1;
-    app.contact().delete(index);
+    Set<ContactData> before = app.contact().all();
+    ContactData deletionContact = before.iterator().next();
+    app.contact().delete(deletionContact);
     app.goTo().homePage();
-    List<ContactData> after = app.contact().list();
-    Assert.assertEquals(after.size(), index);
+    Set<ContactData> after = app.contact().all();
+    Assert.assertEquals(after.size(), before.size() - 1);
 
-    before.remove(index);
+    before.remove(deletionContact);
     Assert.assertEquals(before, after);
   }
 

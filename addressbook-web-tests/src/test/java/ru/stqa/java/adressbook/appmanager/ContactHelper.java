@@ -59,6 +59,11 @@ public class ContactHelper extends HelperBase {
     wd.findElements(By.xpath("//*[@id='maintable']//input[@type='checkbox']")).get(index).click();
   }
 
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
+    //wd.findElement(By.xpath("//*[@id='maintable']//input[@type='checkbox']")).get(index).click();
+  }
+
   public void deleteSelectedContact() {
     click(By.xpath("//*[@type='button' and @value='Delete']"));
   }
@@ -67,7 +72,12 @@ public class ContactHelper extends HelperBase {
     selectContact(index);
     deleteSelectedContact();
     acceptAlert();
+  }
 
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
+    deleteSelectedContact();
+    acceptAlert();
   }
 
   public void initContactModification(int index) {
@@ -121,5 +131,6 @@ public class ContactHelper extends HelperBase {
     }
     return contacts;
   }
+
 
 }
