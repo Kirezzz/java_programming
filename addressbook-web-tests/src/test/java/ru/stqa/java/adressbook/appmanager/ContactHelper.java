@@ -36,12 +36,13 @@ public class ContactHelper extends HelperBase {
     }
   }
 
-  public void modify(int index, ContactData contact) {
-   initContactModification(index);
+  public void modify(ContactData contact) {
+   initContactModificationById(contact.getId());
    fillContactForm(contact, false);
    submitContactModification();
    returnToHomePage();
   }
+
 
   public void returnToHomePage() {
     click(By.linkText("home page"));
@@ -82,6 +83,10 @@ public class ContactHelper extends HelperBase {
 
   public void initContactModification(int index) {
     wd.findElements((By.xpath("//*[@id='maintable']//img[@title='Edit']"))).get(index).click();
+  }
+
+  public void initContactModificationById(int id) {
+    wd.findElement((By.cssSelector("a[href]=edit.php?id='" + id + "']"))).click();
   }
 
   public void submitContactModification() {
