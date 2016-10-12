@@ -1,12 +1,13 @@
 package ru.stqa.java.adressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.java.adressbook.model.GroupData;
+import ru.stqa.java.adressbook.model.Groups;
 
-import java.util.List;
-import java.util.Set;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class GroupDeletionTests extends TestBase {
 
@@ -21,14 +22,12 @@ public class GroupDeletionTests extends TestBase {
 
   @Test
   public void testGroupDeletion() {
-    Set<GroupData> before = app.group().all();
-    GroupData deletionGroup = before.iterator().next();
-    app.group().delete(deletionGroup);
-    Set<GroupData> after = app.group().all();
-    Assert.assertEquals(after.size(), before.size() - 1);
-
-    before.remove(deletionGroup);
-    Assert.assertEquals(before, after);
+    Groups before = app.group().all();
+    GroupData deletiedGroup = before.iterator().next();
+    app.group().delete(deletiedGroup);
+    Groups after = app.group().all();
+    assertEquals(after.size(), before.size() - 1);
+    assertThat(after, equalTo(before.without(deletiedGroup)));
 
   }
 
