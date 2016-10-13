@@ -52,6 +52,7 @@ public class ContactModificationTest extends TestBase {
             .withTelhome("111-000-333")
             .withEmail1("test2@test.com");
     app.contact().modify(contact);
+    assertThat(app.contact().getContactCount(), equalTo(before.size()));//хеширование
     Contacts after = app.contact().all();
     assertThat(after.size(), equalTo(before.size()));
 
