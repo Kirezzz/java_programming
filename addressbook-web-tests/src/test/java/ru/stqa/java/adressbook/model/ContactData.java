@@ -6,7 +6,7 @@ public class ContactData {
   private String firstname;
   private String middlename;
   private String lastname;
-  private String address1;
+  private String address;
   private String home;
   private String mobile;
   private String work;
@@ -36,8 +36,8 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withAddress1(String address1) {
-    this.address1 = address1;
+  public ContactData withAddress(String address) {
+    this.address = address;
     return this;
   }
 
@@ -92,8 +92,8 @@ public class ContactData {
     return lastname;
   }
 
-  public String getAddress1() {
-    return address1;
+  public String getAddress() {
+    return address;
   }
 
   public String getHomePhone() {
@@ -125,21 +125,6 @@ public class ContactData {
   }
 
   @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", firstname='" + firstname + '\'' +
-            ", lastname='" + lastname + '\'' +
-            ", home='" + home + '\'' +
-            ", mobile='" + mobile + '\'' +
-            ", work='" + work + '\'' +
-            ", email='" + email + '\'' +
-            ", email2='" + email2 + '\'' +
-            ", email3='" + email3 + '\'' +
-            '}';
-  }
-
-  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -149,6 +134,7 @@ public class ContactData {
     if (id != that.id) return false;
     if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
     if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+    if (address != null ? !address.equals(that.address) : that.address != null) return false;
     if (home != null ? !home.equals(that.home) : that.home != null) return false;
     if (mobile != null ? !mobile.equals(that.mobile) : that.mobile != null) return false;
     if (work != null ? !work.equals(that.work) : that.work != null) return false;
@@ -163,6 +149,7 @@ public class ContactData {
     int result = id;
     result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    result = 31 * result + (address != null ? address.hashCode() : 0);
     result = 31 * result + (home != null ? home.hashCode() : 0);
     result = 31 * result + (mobile != null ? mobile.hashCode() : 0);
     result = 31 * result + (work != null ? work.hashCode() : 0);
@@ -171,4 +158,21 @@ public class ContactData {
     result = 31 * result + (email3 != null ? email3.hashCode() : 0);
     return result;
   }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", address='" + address + '\'' +
+            ", home='" + home + '\'' +
+            ", mobile='" + mobile + '\'' +
+            ", work='" + work + '\'' +
+            ", email='" + email + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
+            '}';
+  }
+
 }

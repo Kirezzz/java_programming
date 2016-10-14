@@ -1,15 +1,9 @@
 package ru.stqa.java.adressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.java.adressbook.model.ContactData;
 import ru.stqa.java.adressbook.model.Contacts;
-
-import java.util.List;
-import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -26,7 +20,7 @@ public class ContactDeletionTests extends TestBase {
             .withFirstname("First name5")
             .withMiddlename("Middle name5")
             .withLastname("Last name5")
-            .withAddress1("address5")
+            .withAddress("address5")
             .withHomePhone("111")
             .withMobilePhone("222")
             .withWorkPhone("333")

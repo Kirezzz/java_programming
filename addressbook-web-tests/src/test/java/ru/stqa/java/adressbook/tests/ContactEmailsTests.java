@@ -19,7 +19,7 @@ public class ContactEmailsTests extends TestBase {
             .withFirstname("First name5")
             .withMiddlename("Middle name5")
             .withLastname("Last name5")
-            .withAddress1("address5")
+            .withAddress("address5")
             .withHomePhone("111-222-333")
             .withEmail("test5@test.com")
             .withEmail2("test6@test.com")

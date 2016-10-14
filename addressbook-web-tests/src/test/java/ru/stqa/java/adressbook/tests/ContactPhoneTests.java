@@ -1,7 +1,5 @@
 package ru.stqa.java.adressbook.tests;
 
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.java.adressbook.model.ContactData;
@@ -21,7 +19,7 @@ public class ContactPhoneTests extends TestBase {
             .withFirstname("First name5")
             .withMiddlename("Middle name5")
             .withLastname("Last name5")
-            .withAddress1("address5")
+            .withAddress("address5")
             .withHomePhone("111")
             .withMobilePhone("2222")
             .withWorkPhone("333")
