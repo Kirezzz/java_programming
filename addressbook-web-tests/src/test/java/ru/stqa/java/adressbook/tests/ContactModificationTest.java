@@ -1,17 +1,9 @@
 package ru.stqa.java.adressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.java.adressbook.model.ContactData;
 import ru.stqa.java.adressbook.model.Contacts;
-import ru.stqa.java.adressbook.model.GroupData;
-
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -29,8 +21,8 @@ public class ContactModificationTest extends TestBase {
             .withMiddlename("Middle name5")
             .withLastname("Last name5")
             .withAddress1("address5")
-            .withTelhome("111-222-333")
-            .withEmail1("test5@test.com")
+            .withHomePhone("111-222-333")
+            .withEmail("test5@test.com")
             .withGroup("test1");
     if (app.contact().list().size() == 0) {
       app.contact().create(contact, true);
@@ -49,8 +41,8 @@ public class ContactModificationTest extends TestBase {
             .withMiddlename("Middle name1")
             .withLastname("Last name1")
             .withAddress1("address2")
-            .withTelhome("111-000-333")
-            .withEmail1("test2@test.com");
+            .withHomePhone("111-000-333")
+            .withEmail("test2@test.com");
     app.contact().modify(contact);
     assertThat(app.contact().getContactCount(), equalTo(before.size()));//хеширование
     Contacts after = app.contact().all();
