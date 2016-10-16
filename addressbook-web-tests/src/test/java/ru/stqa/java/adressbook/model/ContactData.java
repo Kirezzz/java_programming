@@ -16,7 +16,7 @@ public class ContactData {
   private String email3;
   private String allEmails;
   private String group;
-
+  private String allContactinfo;
 
 
   public ContactData withId(int id) {
@@ -88,6 +88,11 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withAllContactinfo(String allContactinfo) {
+    this.allContactinfo = allContactinfo;
+    return this;
+  }
+
 
   public int getId() {
     return id;
@@ -145,6 +150,10 @@ public class ContactData {
     return group;
   }
 
+  public String getAllContactinfo() {
+    return allContactinfo;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -163,7 +172,8 @@ public class ContactData {
     if (email != null ? !email.equals(that.email) : that.email != null) return false;
     if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
     if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
-    return allEmails != null ? allEmails.equals(that.allEmails) : that.allEmails == null;
+    if (allEmails != null ? !allEmails.equals(that.allEmails) : that.allEmails != null) return false;
+    return allContactinfo != null ? allContactinfo.equals(that.allContactinfo) : that.allContactinfo == null;
 
   }
 
@@ -181,6 +191,7 @@ public class ContactData {
     result = 31 * result + (email2 != null ? email2.hashCode() : 0);
     result = 31 * result + (email3 != null ? email3.hashCode() : 0);
     result = 31 * result + (allEmails != null ? allEmails.hashCode() : 0);
+    result = 31 * result + (allContactinfo != null ? allContactinfo.hashCode() : 0);
     return result;
   }
 
@@ -199,6 +210,7 @@ public class ContactData {
             ", email2='" + email2 + '\'' +
             ", email3='" + email3 + '\'' +
             ", allEmails='" + allEmails + '\'' +
+            ", allContactinfo='" + allContactinfo + '\'' +
             '}';
   }
 
