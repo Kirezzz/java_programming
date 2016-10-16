@@ -8,6 +8,9 @@ import ru.stqa.java.adressbook.model.ContactData;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
 /**
  * Created by Sony on 16.10.2016.
  */
@@ -18,7 +21,7 @@ public class ContactDetailsTests extends TestBase {
     ContactData contact = app.contact().all().iterator().next();
 
     ContactData contactInfoDetailsForm = app.contact().contactInfoDetailsForm(contact);
-    MatcherAssert.assertThat(contact.getAllContactinfo(), Matchers.equalTo(mergeAllContactInfo(contactInfoDetailsForm)));
+    assertThat(mergeAllContactInfo(contact.getAllContactinfo()), equalTo(mergeAllContactInfo(contactInfoDetailsForm)));
 
   }
 
@@ -27,14 +30,18 @@ public class ContactDetailsTests extends TestBase {
             contact.getEmail(),contact.getEmail2(),contact.getEmail3(),
             contact.getHomePhone(),contact.getMobilePhone(),contact.getWorkPhone())
             .stream().filter((s) -> ! s.equals(""))
-            //.map(ContactPhoneTests::cleaned)
+            .map(ContactDetailsTests::cleaned)
             .collect(Collectors.joining("\n"));
 
   }
 
-  /*public static String cleaned(String phone) {
-    return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
+  public static String cleaned(String details) {
+    return details.replaceAll("\\s", "")
+            .replaceAll("H:", "")
+            .replaceAll("W:", "")
+            .replaceAll("M:", "")
+            .replaceAll("[-()]", "");
   }
-  */
+
 }
 
