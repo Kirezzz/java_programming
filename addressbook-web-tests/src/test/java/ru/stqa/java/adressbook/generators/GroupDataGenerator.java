@@ -34,12 +34,12 @@ public class GroupDataGenerator {
 
   private static List<GroupData> generateGroups(int count) {
     List<GroupData> groups = new ArrayList<GroupData>();
-    for(int i = 0; i < count; i++) {
-    groups.add(new GroupData()
-            .withName(String.format("test %s", i))
-            .withHeader(String.format("header %s", i))
-            .withFooter(String.format("footer %s", i)));
+    for (int i = 0; i < count; i++) {
+      groups.add(new GroupData()
+              .withName(String.format("test %s", i))
+              .withHeader(String.format("header %s", i))
+              .withFooter(String.format("footer %s", i)));
     }
-      return null;
+    return groups;
     }
-}
+  }
