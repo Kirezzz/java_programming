@@ -40,9 +40,7 @@ public class ContactModificationTest extends TestBase {
             .withFirstname("First name1")
             .withMiddlename("Middle name1")
             .withLastname("Last name1")
-            .withAddress("address2")
-            .withHomePhone("111-000-333")
-            .withEmail("test2@test.com");
+            .withAddress("address2");
     app.contact().modify(contact);
     assertThat(app.contact().getContactCount(), equalTo(before.size()));//хеширование
     Contacts after = app.contact().all();

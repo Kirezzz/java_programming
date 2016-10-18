@@ -18,7 +18,7 @@ public class ContactDetailsTests extends TestBase {
   @Test
   public void testContactDetails() {
     app.goTo().homePage();
-    ContactData contact = app.contact().allForDetails().iterator().next();
+    ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoDetailsForm = app.contact().contactInfoDetailsForm(contact);
     assertThat(contact.getAllContactinfo(), equalTo(mergeAllContactInfo(contactInfoDetailsForm)));
   }
